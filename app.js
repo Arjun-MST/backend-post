@@ -6,12 +6,14 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-app.use(cors({
-  origin: '*',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type, Authorization',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Content-Type, Authorization",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 dbConnection();
 
 // Facebook OAuth route
+console.log("Setting up Facebook OAuth route");
 
-app.use('/auth/facebook', facebookAuthRoute);
+app.use("/auth/facebook", facebookAuthRoute);
 export default app;
